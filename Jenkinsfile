@@ -4,9 +4,10 @@ pipeline{
             label 'Docker-Host'
         }
     }
-    // environment {
-    //     DOCKERHUB_CREDENTIALS = credentials('rajeshchanti')
-    // }
+
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('docker-auth')
+    }
     options{
         timeout(time: 1, unit: 'HOURS')
         disableConcurrentBuilds()
@@ -18,7 +19,7 @@ pipeline{
         booleanParam(name: 'Build', defaultValue: false, description: 'Toggle this value')
     }
     stages{
-        stage('build images') {
+        stage('build image') {
             when{
                 expression{
                     params.Build
@@ -26,8 +27,15 @@ pipeline{
             }
             steps{
                 sh """
-                cd ${params.module}
-                docker build -t ${params.module}:${params.version} .
+                    cd ${params.module}
+                    docker build -t ${params.module}:${params.version} .
+                """
+            }
+        }
+        stage('docker login'){
+            steps{
+                sh """
+                    echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin 
                 """
             }
         }
