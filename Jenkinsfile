@@ -27,7 +27,7 @@ pipeline{
             }
             steps{
                 sh """
-                cd ~/E-commerce_project/${params.module}
+                cd /${params.module}
                 docker build -t ${params.module}:${params.version} .
                 """
             }
