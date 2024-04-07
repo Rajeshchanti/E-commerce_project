@@ -5,9 +5,9 @@ pipeline{
     //     }
     // }
     agent any
-    environment {
-        DOCKERHUB_CREDENTIALS = credentials('rajeshchanti')
-    }
+    // environment {
+    //     DOCKERHUB_CREDENTIALS = credentials('rajeshchanti')
+    // }
     options{
         timeout(time: 1, unit: 'HOURS')
         disableConcurrentBuilds()
