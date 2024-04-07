@@ -27,7 +27,7 @@ pipeline{
             }
             steps{
                 sh """
-                cd /home/centos/E-commerce_project/${params.module}
+                cd ~/E-commerce_project/${params.module}
                 docker build -t ${params.module}:${params.version} .
                 """
             }
