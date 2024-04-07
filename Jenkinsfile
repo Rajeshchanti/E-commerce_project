@@ -1,9 +1,9 @@
 pipeline{
-    // agent {
-    //     node {
-    //         label 'agent-1'
-    //     }
-    // }
+    agent {
+        node {
+            label 'Docker-Host'
+        }
+    }
     agent any
     // environment {
     //     DOCKERHUB_CREDENTIALS = credentials('rajeshchanti')
