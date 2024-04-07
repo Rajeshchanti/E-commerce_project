@@ -42,7 +42,8 @@ pipeline{
         stage('Push image'){
             steps{
                 sh """
-                    docker push ${params.module}:${params.version} rajeshchanti/${params.module}:${params.version}
+                    docker tag ${params.module}:${params.version} rajeshchanti/${params.module}:${params.version}
+                    docker image push rajeshchanti/${params.module}:${params.version}
                 """
             }
         }
