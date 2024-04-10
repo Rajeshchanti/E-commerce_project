@@ -126,21 +126,9 @@ sudo systemctl status jenkins
 
 ![alt text](images/image-16.png)
 
-* Let's create a pipeline --> switch to the Jenkins UI and in Dashboard click on **New Item**
+* To connet the DockerHub we need to supply credentials, go to **Dashborad** --> **Manage Jenkins** --> **Credentials**
 
-![alt text](images/image-21.png)
-
-* Enter name --> click on **pipeline** --> click **OK**
-
-![alt text](images/image-22.png)
-
-* Enter the pipeline details such as defination, SCM and git repository URL as shown below and **Click on apply & save**.
-
-![alt text](images/image-23.png)
-
-* To add Docker credentials, go to **Dashborad** --> **Manage Jenkins** --> **Credentials**
-
-![alt text](images/image24.png)
+![alt text](images/image-24.png)
 
 * Click on **System**
 
@@ -162,3 +150,15 @@ sudo systemctl status jenkins
   * Click on **Create**
 
 ![alt text](images/image-28.png)
+
+* Let's create a pipeline --> switch to the Jenkins UI and in Dashboard click on **New Item**
+
+![alt text](images/image-21.png)
+
+* Enter name --> click on **pipeline** --> click **OK**
+
+![alt text](images/image-22.png)
+
+* Enter the pipeline details such as defination, SCM and git repository URL as shown below and **Click on apply & save**.
+
+![alt text](images/image-23.png)
