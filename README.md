@@ -1,11 +1,12 @@
 Deploy your code on a Docker Container using Jenkins on AWS
 
 # Agenda :
-* Launch EC2 Instance (Jenkins server).
-* Launch EC2 Instance for Node (Docker-Host).
-* Install Docker in Node.
-* setup jenkins in Jenkins server and create a Node.
-* write a Jenkins file to build and pushing Images to DockerHub.
+* Build Docker images and pushing it to Docker Hub.
+  * Launch EC2 Instance (Jenkins server).
+  * Launch EC2 Instance for Node (Docker-Host).
+  * Install Docker in Node.
+  * setup jenkins in Jenkins server and create a Node.
+  * write a Jenkins file to build and pushing Images to     DockerHub.
 
 ## Lauch EC2 Instance
 * Log in to Amazon management Console , open EC2 Dashboard and Launch a Instance by giving the required details as shown below:
@@ -46,7 +47,7 @@ sudo sh install_docker.sh
 
 ## Setup Jenkins Server on AWS EC2 Instance
 
-* After logging in to EC2 machine install jenkins through below commands or for more info you can visit the official jenkins website: https://pkg.jenkins.io/redhat-stable/
+* After logging in to EC2(Jenkins) machine install jenkins through below commands or for more info you can visit the official jenkins website: https://pkg.jenkins.io/redhat-stable/
 
 ```python
 sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
@@ -120,7 +121,8 @@ sudo systemctl status jenkins
   * Credentials: add your instance credentials and click on save.
   
 ![alt text](images/image-15.png)
-* Now you can see the Node (Docker-Host) as shown below:
+* Now you can see the Node (Docker-Host) as shown below.
+* Click on created Node and check the log whether it is connected to jenkins server or not.
 
 ![alt text](images/image-16.png)
 
@@ -132,6 +134,31 @@ sudo systemctl status jenkins
 
 ![alt text](images/image-22.png)
 
-* Enter the pipeline details such as defination, SCM and git repository URL as shown below and **Click on save & apply**.
+* Enter the pipeline details such as defination, SCM and git repository URL as shown below and **Click on apply & save**.
 
 ![alt text](images/image-23.png)
+
+* To add Docker credentials, go to **Dashborad** --> **Manage Jenkins** --> **Credentials**
+
+![alt text](images/image24.png)
+
+* Click on **System**
+
+![alt text](images/image-25.png)
+
+* Click on **Global Credentials**
+
+![alt text](images/image-26.png)
+
+* **Add Credentials**
+
+![alt text](images/image-27.png)
+
+* Enter the required details:
+  * Scope: choose the scope from the dropdown as per your requirement.
+  * Username: Enter the Docker Hub Username.
+  * Password: Enter the Docker Hub Password.
+  * ID: Give any name it's your choice (we should give this Id in Jenkinsfile)
+  * Click on **Create**
+
+![alt text](images/image-28.png)
