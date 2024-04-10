@@ -30,20 +30,20 @@ else
     echo "You are root user"
 fi
 
-sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo &>> $LOGFILE
 VALIDATE $? "Dowloading jenkins repo"
 
-sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key &>> $LOGFILE
 VALIDATE $? "Importing Key"
 
-sudo yum install fontconfig java-17-openjdk -y
+sudo yum install fontconfig java-17-openjdk -y &>> $LOGFILE
 VALIDATE $? "Installing Java"
 
-sudo yum install jenkins -y
+sudo yum install jenkins -y &>> $LOGFILE
 VALIDATE $? "Installing jenkins"
 
-sudo systemctl start jenkins
+sudo systemctl start jenkins &>> $LOGFILE
 VALIDATE $? "Starting Jenkins"
 
-sudo systemctl enable jenkins
+sudo systemctl enable jenkins &>> $LOGFILE
 VALIDATE $? "Enable Jenkins"

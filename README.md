@@ -20,6 +20,19 @@ Deploy your code on a Docker Container using Jenkins on AWS
 
 ![alt text](images/image-1.png)
 
+* Launch a EC2 Instance, let's it be a worker node.
+
+![alt text](images/image-17.png)
+* Log in to the EC2 Instance (Node) and create a directory as shown below.
+
+![alt text](images/image-18.png)
+
+* Install java on worker node ( otherwise jenkins doesn't run on worker node ) by using below command:
+```python
+ sudo yum install fontconfig java-17-openjdk -y
+```
+![alt text](images/image-19.png)
+
 Finally we got an instance as shown above and now Log in to the instance.
 
 ## Setup Jenkins Server on AWS EC2 Instance
@@ -102,22 +115,9 @@ sudo systemctl status jenkins
 
 ![alt text](images/image-16.png)
 
-* Launch a EC2 Instance, let's it be a worker node.
-
-![alt text](images/image-17.png)
-* Log in to the EC2 Instance and create a directory as shown below.
-
-![alt text](images/image-18.png)
-
-* Install java on worker node ( otherwise jenkins doesn't run on worker node ) by using below command:
-```python
- sudo yum install fontconfig java-17-openjdk -y
-```
-![alt text](images/image-19.png)
-
 ## Setup Docker on Node
 
-* Run the install_docker.sh script to install the docker.
+* Run the install_docker.sh script to install the docker in Node( Docker-Host).
 
 ```python
 sudo sh install_docker.sh

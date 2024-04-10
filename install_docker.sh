@@ -30,26 +30,26 @@ else
     echo "You are root user"
 fi
 
-yum install -y yum-utils
+yum install -y yum-utils &>> $LOGFILE
 
 VALIDATE $? "Installed yum utils"
 
-yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo &>> $LOGFILE
 
 VALIDATE $? "Added docker repo"
 
-yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y &>> $LOGFILE
 
 VALIDATE $? "Installed docker components"
 
-systemctl start docker
+systemctl start docker &>> $LOGFILE
 
 VALIDATE $? "Started docker"
 
-systemctl enable docker
+systemctl enable docker &>> $LOGFILE
 
 VALIDATE $? "Enabled docker"
 
-usermod -aG docker centos
+usermod -aG docker centos &>> $LOGFILE
 
 VALIDATE $? "added centos user to docker group"
