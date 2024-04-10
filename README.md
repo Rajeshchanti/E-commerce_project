@@ -2,9 +2,9 @@ Deploy your code on a Docker Container using Jenkins on AWS
 
 # Agenda :
 * Launch EC2 Instance (Jenkins server).
-* setup jenkins in Jenkins server and create a Node.
 * Launch EC2 Instance for Node (Docker-Host).
 * Install Docker in Node.
+* setup jenkins in Jenkins server and create a Node.
 * write a Jenkins file to build and pushing Images to DockerHub.
 
 ## Lauch EC2 Instance
@@ -34,6 +34,15 @@ Deploy your code on a Docker Container using Jenkins on AWS
 ![alt text](images/image-19.png)
 
 Finally we got an instance as shown above and now Log in to the instance.
+
+## Setup Docker on Node
+
+* Run the install_docker.sh script to install the docker in Node( Docker-Host).
+
+```python
+sudo sh install_docker.sh
+```
+![alt text](images/image-20.png)
 
 ## Setup Jenkins Server on AWS EC2 Instance
 
@@ -104,7 +113,7 @@ sudo systemctl status jenkins
 ![alt text](images/image-14.png)
 
 * Fill the required as shown below:
-  * Root dir: Give root dir ( will going to create a dir in worker node ).
+  * Root dir: Give root dir ( which we created in worker node ).
   * Lables: you can give any name.
   * Launch method: choose launch agents via SSH.
   * Host: Private IP of EC2 Instance (worker node).
@@ -114,15 +123,6 @@ sudo systemctl status jenkins
 * Now you can see the Node (Docker-Host) as shown below:
 
 ![alt text](images/image-16.png)
-
-## Setup Docker on Node
-
-* Run the install_docker.sh script to install the docker in Node( Docker-Host).
-
-```python
-sudo sh install_docker.sh
-```
-![alt text](images/image-20.png)
 
 * Let's create a pipeline --> switch to the Jenkins UI and in Dashboard click on **New Item**
 
